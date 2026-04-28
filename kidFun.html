@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 kidFun 🌸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="stylesheet" href="kidFun.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        pink: {
+                            50: '#FDF2F8', 100: '#FCE7F3', 200: '#FBCFE8', 300: '#F9A8D4',
+                            400: '#F472B6', 500: '#EC4899', 600: '#DB2777', 700: '#BE185D',
+                        },
+                        purple: {
+                            50: '#FAF5FF', 100: '#F3E8FF', 200: '#E9D5FF', 300: '#D8B4FE',
+                            400: '#C084FC', 500: '#A855F7', 600: '#9333EA', 700: '#7E22CE',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="bg-kids min-h-screen overflow-x-hidden">
+
+    <!-- Floating Bubbles -->
+    <div id="bubbles" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-2xl float">🌸</span>
+                <span class="text-xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Dunia Ceria</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#beranda" class="text-sm font-medium text-pink-600 hover:text-purple-600 transition-colors">Beranda</a>
+                <a href="#permainan" class="text-sm font-medium text-pink-600 hover:text-purple-600 transition-colors">Permainan</a>
+                <a href="#mewarnai" class="text-sm font-medium text-pink-600 hover:text-purple-600 transition-colors">Mewarnai</a>
+                <a href="#hewan" class="text-sm font-medium text-pink-600 hover:text-purple-600 transition-colors">Hewan</a>
+                <a href="#cerita" class="text-sm font-medium text-pink-600 hover:text-purple-600 transition-colors">Cerita</a>
+                <button onclick="openRewardShop()" class="text-sm font-bold text-white px-4 py-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105 transition-transform flex items-center gap-1">
+                    🏪 Toko
+                </button>
+            </div>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-pink-500">☰</button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#beranda" onclick="toggleMobileMenu()" class="block py-2 text-pink-600 font-medium">🏠 Beranda</a>
+            <a href="#permainan" onclick="toggleMobileMenu()" class="block py-2 text-pink-600 font-medium">🎮 Permainan</a>
+            <a href="#mewarnai" onclick="toggleMobileMenu()" class="block py-2 text-pink-600 font-medium">🎨 Mewarnai</a>
+            <a href="#hewan" onclick="toggleMobileMenu()" class="block py-2 text-pink-600 font-medium">🐾 Hewan</a>
+            <a href="#cerita" onclick="toggleMobileMenu()" class="block py-2 text-pink-600 font-medium">📖 Cerita</a>
+            <button onclick="openRewardShop();toggleMobileMenu()" class="block w-full text-left py-2 text-white font-bold bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl px-4">🏪 Toko Reward</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="min-h-screen flex items-center relative pt-16">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 z-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur border border-pink-200 text-sm font-medium text-pink-600">
+                        <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+                        Kumpulkan bintang, tukar reward!
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                        <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-pink-400 bg-clip-text text-transparent">Halo Teman</span>
+                        <br>
+                        <span class="text-4xl md:text-5xl text-purple-700">Ayo Bermain! 🎉</span>
+                    </h1>
+                    <p class="text-lg text-purple-600/80 font-light leading-relaxed max-w-md">
+                        Setiap permainan yang kamu mainkan bisa dapat bintang ⭐. Kumpulkan dan tukar dengan reward seru di Toko Reward!
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#permainan" class="btn-fun text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2">🎮 Mulai Bermain</a>
+                        <button onclick="openRewardShop()" class="px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2 bg-white/70 backdrop-blur border-2 border-purple-300 text-purple-600 hover:bg-purple-100 transition-all hover:scale-105">
+                            🏪 Lihat Toko
+                        </button>
+                    </div>
+                    <!-- Badge strip -->
+                    <div class="pt-4">
+                        <p class="text-xs text-purple-400 font-medium mb-2">Koleksi Badgemu:</p>
+                        <div class="badge-strip" id="heroBadges"></div>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <div class="absolute inset-0 rounded-full border-4 border-dashed border-pink-300/40 spin-slow"></div>
+                        <div class="absolute inset-4 rounded-full border-4 border-dashed border-purple-300/40 spin-slow" style="animation-direction:reverse;animation-duration:12s"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-8xl md:text-9xl bounce-soft">🦄</div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 text-3xl float">🌟</div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 text-3xl float-slow">🎀</div>
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 text-3xl float" style="animation-delay:0.5s">🦋</div>
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 text-3xl float-slow" style="animation-delay:1s">🌺</div>
+                        <div class="absolute top-8 right-8 text-2xl wiggle">💕</div>
+                        <div class="absolute bottom-8 left-8 text-2xl wiggle" style="animation-delay:0.3s">💜</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Activities Grid -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 section-reveal">
+                <span class="text-4xl mb-4 block">🎪</span>
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-4">Pilih Kegiatan Seru!</h2>
+                <p class="text-purple-500/70 text-lg">Main → Dapat Bintang → Tukar Reward!</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 section-reveal">
+                <div class="card-fun rounded-3xl p-6 text-center group" onclick="scrollToSection('permainan')">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-500">🧩</div>
+                    <h3 class="text-lg font-bold text-purple-700 mb-1">Cocokkan Gambar</h3>
+                    <p class="text-xs text-pink-400 mb-1">Menang = +5 ⭐</p>
+                    <div class="mt-3 text-xs font-medium text-purple-400 group-hover:text-purple-600 transition-colors">Main Sekarang →</div>
+                </div>
+                <div class="card-fun rounded-3xl p-6 text-center group" onclick="scrollToSection('mewarnai')">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-500">🎨</div>
+                    <h3 class="text-lg font-bold text-purple-700 mb-1">Mewarnai</h3>
+                    <p class="text-xs text-pink-400 mb-1">Simpan gambar = +3 ⭐</p>
+                    <div class="mt-3 text-xs font-medium text-purple-400 group-hover:text-purple-600 transition-colors">Main Sekarang →</div>
+                </div>
+                <div class="card-fun rounded-3xl p-6 text-center group" onclick="scrollToSection('hewan')">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-500">🐾</div>
+                    <h3 class="text-lg font-bold text-purple-700 mb-1">Kenali Hewan</h3>
+                    <p class="text-xs text-pink-400 mb-1">Klik hewan = +1 ⭐</p>
+                    <div class="mt-3 text-xs font-medium text-purple-400 group-hover:text-purple-600 transition-colors">Main Sekarang →</div>
+                </div>
+                <div class="card-fun rounded-3xl p-6 text-center group" onclick="scrollToSection('cerita')">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-500">📖</div>
+                    <h3 class="text-lg font-bold text-purple-700 mb-1">Cerita Pendek</h3>
+                    <p class="text-xs text-pink-400 mb-1">Baca cerita = +2 ⭐</p>
+                    <div class="mt-3 text-xs font-medium text-purple-400 group-hover:text-purple-600 transition-colors">Main Sekarang →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Game -->
+    <section id="permainan" class="py-24 relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 section-reveal">
+                <span class="text-5xl mb-4 block wiggle">🧩</span>
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-4">Cocokkan Gambar</h2>
+                <p class="text-purple-500/70 text-lg mb-6">Balik kartu & temukan pasangannya! Menang = +5 ⭐</p>
+                <div class="flex items-center justify-center gap-6 text-sm font-medium">
+                    <div class="px-4 py-2 rounded-full bg-pink-100 text-pink-600">Langkah: <span id="moveCount" class="font-bold">0</span></div>
+                    <div class="px-4 py-2 rounded-full bg-purple-100 text-purple-600">Pasangan: <span id="matchCount" class="font-bold">0</span>/6</div>
+                </div>
+            </div>
+            <div id="memoryGrid" class="grid grid-cols-4 gap-3 md:gap-4 max-w-lg mx-auto section-reveal"></div>
+            <div class="text-center mt-8 section-reveal">
+                <button onclick="initMemoryGame()" class="btn-fun text-white px-8 py-3 rounded-full font-bold inline-flex items-center gap-2">🔄 Main Lagi</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drawing -->
+    <section id="mewarnai" class="py-24 relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12 section-reveal">
+                <span class="text-5xl mb-4 block bounce-soft">🎨</span>
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent mb-4">Ayo Mewarnai!</h2>
+                <p class="text-purple-500/70 text-lg">Simpan gambarmu untuk dapat +3 ⭐</p>
+            </div>
+            <div class="section-reveal">
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button onclick="setColor('#EC4899')" class="color-btn active" style="background:#EC4899"></button>
+                    <button onclick="setColor('#A855F7')" class="color-btn" style="background:#A855F7"></button>
+                    <button onclick="setColor('#F472B6')" class="color-btn" style="background:#F472B6"></button>
+                    <button onclick="setColor('#C084FC')" class="color-btn" style="background:#C084FC"></button>
+                    <button onclick="setColor('#8B5CF6')" class="color-btn" style="background:#8B5CF6"></button>
+                    <button onclick="setColor('#F43F5E')" class="color-btn" style="background:#F43F5E"></button>
+                    <button onclick="setColor('#D946EF')" class="color-btn" style="background:#D946EF"></button>
+                    <button onclick="setColor('#FBBF24')" class="color-btn" style="background:#FBBF24"></button>
+                    <button onclick="setColor('#34D399')" class="color-btn" style="background:#34D399"></button>
+                    <button onclick="setColor('#60A5FA')" class="color-btn" style="background:#60A5FA"></button>
+                    <button onclick="setColor('#1E1B4B')" class="color-btn" style="background:#1E1B4B"></button>
+                    <button onclick="setColor('#FFFFFF')" class="color-btn" style="background:#FFFFFF;border-color:#ddd"></button>
+                    <div class="flex items-center gap-2 ml-4">
+                        <span class="text-xs text-purple-400 font-medium">Ukuran:</span>
+                        <input type="range" id="brushSize" min="2" max="30" value="8" class="w-24 accent-purple-500" oninput="currentBrushSize=this.value">
+                    </div>
+                    <button onclick="clearCanvas()" class="ml-2 px-4 py-2 rounded-full bg-pink-100 text-pink-600 text-sm font-bold hover:bg-pink-200 transition-colors">🗑️ Hapus</button>
+                    <button onclick="downloadCanvas()" class="px-4 py-2 rounded-full bg-purple-100 text-purple-600 text-sm font-bold hover:bg-purple-200 transition-colors">💾 Simpan (+3⭐)</button>
+                </div>
+                <div class="flex justify-center">
+                    <canvas id="drawCanvas" class="drawing-canvas w-full max-w-2xl" width="700" height="450"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animals -->
+    <section id="hewan" class="py-24 relative z-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12 section-reveal">
+                <span class="text-5xl mb-4 block float">🐾</span>
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-4">Kenali Hewan Lucu</h2>
+                <p class="text-purple-500/70 text-lg">Klik hewannya! Setiap klik = +1 ⭐</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 section-reveal" id="animalGrid"></div>
+        </div>
+    </section>
+
+    <!-- Stories -->
+    <section id="cerita" class="py-24 relative z-10">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12 section-reveal">
+                <span class="text-5xl mb-4 block bounce-soft">📖</span>
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent mb-4">Cerita Sebelum Tidur</h2>
+                <p class="text-purple-500/70 text-lg">Baca ceritanya, dapat +2 ⭐!</p>
+            </div>
+            <div class="space-y-6 section-reveal" id="storyContainer"></div>
+        </div>
+    </section>
+
+    <!-- Balloon Pop -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="card-fun rounded-3xl p-8 md:p-12 section-reveal">
+                <span class="text-6xl mb-6 block rainbow">🎈</span>
+                <h2 class="text-2xl md:text-3xl font-black text-purple-700 mb-2">Klik Balonnya!</h2>
+                <p class="text-purple-400 mb-2">Setiap 5 balon = +1 ⭐</p>
+                <div class="text-5xl font-black bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-8" id="balloonScore">0</div>
+                <div id="balloonArea" class="flex flex-wrap justify-center gap-4 min-h-[120px]"></div>
+                <button onclick="spawnBalloons()" class="btn-fun text-white px-8 py-3 rounded-full font-bold mt-6 inline-flex items-center gap-2">🎈 Munculkan Balon!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 relative z-10 border-t border-pink-200/50 pb-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="text-3xl mb-4">🌸🦄💜🎀</div>
+            <p class="text-purple-400 font-medium">Dibuat dengan 💕 untuk anak-anak</p>
+            <p class="text-purple-300 text-sm mt-2">Dunia Ceria © 2025 — Main, Kumpulkan Bintang, Dapat Reward!</p>
+        </div>
+    </footer>
+
+    <!-- ===== STAR HUD (floating bottom) ===== -->
+    <div class="star-hud" id="starHud">
+        <span class="star-emoji">⭐</span>
+        <span class="star-count" id="hudStarCount">0</span>
+        <div class="w-px h-6 bg-pink-200"></div>
+        <button class="star-btn" onclick="openRewardShop()">🏪 Toko Reward</button>
+    </div>
+
+    <!-- ===== REWARD SHOP MODAL ===== -->
+    <div class="reward-overlay" id="rewardOverlay" onclick="if(event.target===this)closeRewardShop()">
+        <div class="reward-modal">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-2xl font-black bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">🏪 Toko Reward</h2>
+                    <p class="text-sm text-purple-400 mt-1">Tukar bintang dengan hadiah seru!</p>
+                </div>
+                <button onclick="closeRewardShop()" class="w-10 h-10 rounded-full bg-pink-100 text-pink-500 flex items-center justify-center text-xl hover:bg-pink-200 transition-colors">✕</button>
+            </div>
+
+            <!-- Balance -->
+            <div class="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-100 mb-6">
+                <span class="text-3xl">⭐</span>
+                <div>
+                    <div class="text-xs text-purple-400 font-medium">Bintang Kamu</div>
+                    <div class="text-2xl font-black bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent" id="shopStarCount">0</div>
+                </div>
+            </div>
+
+            <!-- Badges section -->
+            <div class="mb-6">
+                <h3 class="text-sm font-bold text-purple-700 mb-3">🏅 Badges</h3>
+                <div class="badge-strip" id="shopBadges"></div>
+            </div>
+
+            <!-- Rewards grid -->
+            <div class="space-y-3" id="rewardList"></div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] flex flex-col items-center gap-2"></div>
+
+    <script src="kidFun.js"></script>
+
+</body>
+</html>
